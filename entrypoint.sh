@@ -2,7 +2,7 @@
 
 ARGS="--without-dejavu --without-elastic-stack --without-macos-optimizations"
 
-@echo "💎 Running Kloud images build"
+echo "💎 Running Kloud images build"
 
 if [ "$4" = 'enterprise' ]
 then
@@ -18,14 +18,14 @@ else
     ARGS="$ARGS --mysql"
 fi
 
-if [ -z "$6" ]
+if [ "$6" = 1 ]
 then
     ARGS="$ARGS --with-xdebug"
 else
     ARGS="$ARGS --without-xdebug"
 fi
 
-if [ -z "$7" ]
+if [ "$7" = 1 ]
 then
     ARGS="$ARGS --with-blackfire"
 else
