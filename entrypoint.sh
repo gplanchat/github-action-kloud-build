@@ -32,4 +32,9 @@ else
     ARGS="$ARGS --without-blackfire"
 fi
 
+if [ "$8" = 1 ]
+then
+    ARGS="$ARGS --push"
+fi
+
 bin/kloud image:build --php-version="$1" --application="$2" --application-version="$3" $ARGS
