@@ -41,3 +41,4 @@ runs:
     - ${{ inputs.dbms }}
     - ${{ inputs.with-blackfire }}
     - ${{ inputs.with-xdebug }}
+    - ${{ inputs.push }}
