@@ -53,7 +53,12 @@ then
     ARGS="$ARGS --push"
 fi
 
+echo "🔑 Logging into DockerHub..."
+
+( docker login && echo "🎉 Login Succeeded!" )
+
 echo "💎 Running Kloud images build"
+
 echo bin/kloud image:build --php-version="$PHP_VERSION" --application="$APPLICATION" --application-version="$APPLICATION_VERSION" $ARGS
 
 bin/kloud image:build --php-version="$PHP_VERSION" --application="$APPLICATION" --application-version="$APPLICATION_VERSION" $ARGS
