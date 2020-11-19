@@ -1,15 +1,40 @@
-name: 'Hello World'
-description: 'Greet someone and record the time'
+name: 'Kloud images build'
+description: 'Build the Docker images using the Kloud command'
 inputs:
-  who-to-greet:  # id of input
-    description: 'Who to greet'
+  php-version:
+    description: 'The PHP version to use for the images'
     required: true
-    default: 'World'
-outputs:
-  time: # id of output
-    description: 'The time we greeted you'
+    default: '7.4'
+  application:
+    description: 'The application for which the images will be built (oroplatform, orocrm, orocommerce, amrello or middleware)'
+    required: true
+  application-version:
+    description: 'The Application version for which the images will be built'
+    required: true
+  edition:
+    description: 'Set "enterprise" to build for Enterprise Edition, "community" to build for Community Edition'
+    required: true
+    default: true
+  dbms:
+    description: 'The Database engine for which the images are built (postgresql or mysql)'
+    required: true
+    default: 'postgresql'
+  with-blackfire:
+    description: 'Include Blackfire images'
+    required: true
+    default: true
+  with-xdebug:
+    description: 'Include Xdebug images'
+    required: true
+    default: true
 runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
-    - ${{ inputs.who-to-greet }}
+    - ${{ inputs.php-version }}
+    - ${{ inputs.application }}
+    - ${{ inputs.application-version }}
+    - ${{ inputs.edition }}
+    - ${{ inputs.dbms }}
+    - ${{ inputs.with-blackfire }}
+    - ${{ inputs.with-xdebug }}

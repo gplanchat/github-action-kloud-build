@@ -1,23 +1,53 @@
-# Hello world docker action
+# Kloud images build
 
-This action prints "Hello World" to the log or "Hello" + the name of a person to greet. To learn how this action was built, see "[Creating a Docker container action](https://help.github.com/en/articles/creating-a-docker-container-action)" in the GitHub Help documentation.
+This action builds the docker images requied, using the [kiboko-labs/kloud](https://github.com/kiboko-labs/kloud) manager.
+
+Images built are optimized for OroPlatform, OroCRM, OroCommerce, Marello and Middleware applications.
 
 ## Inputs
 
-### `who-to-greet`
+### `php-version`
 
-**Required** The name of the person to greet. Default `"World"`.
+**Required** The PHP version to use for the images.
 
-## Outputs
+### `application`
 
-### `time`
+**Required** The application for which the images will be built (oroplatform, orocrm, orocommerce, amrello or middleware).
 
-The time we greeted you.
+### `application`
+
+**Required** The application for which the images will be built (oroplatform, orocrm, orocommerce, amrello or middleware).
+
+### `application-version`
+
+**Required** The Application version for which the images will be built.
+
+### `edition`
+
+**Required** Set "enterprise" to build for Enterprise Edition, "community" to build for Community Edition.
+
+### `dbms`
+
+**Required** The Database engine for which the images are built (postgresql or mysql).
+
+### `with-blackfire`
+
+**Required** Include Blackfire images.
+
+### `xdebug`
+
+**Required** Include Xdebug images.
 
 ## Example usage
 
 ```yaml
-uses: actions/hello-world-docker-action@master
+uses: gplanchat/github-action-kloud-build@master
 with:
-  who-to-greet: 'Mona the Octocat'
+  php-version: '7.4'
+  application: 'orocommerce'
+  application-version: '4.1'
+  edition: 'enterprise'
+  dbms: 'postgresql'
+  with-blackfire: true
+  with-xdebug: true
 ```
