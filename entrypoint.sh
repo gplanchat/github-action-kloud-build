@@ -55,7 +55,7 @@ fi
 
 echo "🔑 Logging into DockerHub..."
 
-( docker login && echo "🎉 Login Succeeded!" )
+( echo "$DOCKERHUB_PASSWORD" | docker login --username $DOCKERHUB_USERNAME --password-stdin && echo "🎉 Login Succeeded!" )
 
 echo "💎 Running Kloud images build"
 
