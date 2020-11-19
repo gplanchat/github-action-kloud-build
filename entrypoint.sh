@@ -2,6 +2,8 @@
 
 ARGS="--without-dejavu --without-elastic-stack --without-macos-optimizations"
 
+@echo "💎 Running Kloud images build"
+
 if [ "$4" = 'enterprise' ]
 then
     ARGS="$ARGS --enterprise"
@@ -11,9 +13,9 @@ fi
 
 if [ "$5" = 'postgresql' ]
 then
-    ARGS="$ARGS --with-blackfire"
+    ARGS="$ARGS --postgresql"
 else
-    ARGS="$ARGS --without-blackfire"
+    ARGS="$ARGS --mysql"
 fi
 
 if [ -z "$6" ]
