@@ -22,11 +22,14 @@ inputs:
   with-blackfire:
     description: 'Include Blackfire images'
     required: true
-    default: true
+    default: 1
   with-xdebug:
     description: 'Include Xdebug images'
     required: true
-    default: true
+    default: 1
+  push:
+    description: 'Push images to Docker hub'
+    default: 1
 runs:
   using: 'docker'
   image: 'Dockerfile'

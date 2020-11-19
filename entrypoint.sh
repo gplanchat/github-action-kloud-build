@@ -1,8 +1,24 @@
 #!/bin/sh -l
 
+PHP_VERSION=$1
+APPLICATION=$2
+APPLICATION_VERSION=$3
 ARGS="--without-dejavu --without-elastic-stack --without-macos-optimizations"
 
-echo "💎 Running Kloud images build"
+if [ -z "$PHP_VERSION" ]
+then
+    PHP_VERSION="7.4"
+fi
+
+if [ -z "$APPLICATION" ]
+then
+    APPLICATION="orocommerce"
+fi
+
+if [ -z "$APPLICATION_VERSION" ]
+then
+    APPLICATION_VERSION="4.1"
+fi
 
 if [ "$4" = 'enterprise' ]
 then
@@ -37,4 +53,7 @@ then
     ARGS="$ARGS --push"
 fi
 
-bin/kloud image:build --php-version="$1" --application="$2" --application-version="$3" $ARGS
+echo "💎 Running Kloud images build"
+echo bin/kloud image:build --php-version="$PHP_VERSION" --application="$APPLICATION" --application-version="$APPLICATION_VERSION" $ARGS
+
+bin/kloud image:build --php-version="$PHP_VERSION" --application="$APPLICATION" --application-version="$APPLICATION_VERSION" $ARGS
